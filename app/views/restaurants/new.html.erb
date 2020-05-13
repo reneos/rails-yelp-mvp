@@ -1,0 +1,12 @@
+<div class="row">
+  <h1>Add a new restaurant</h1>
+</div>
+
+<div class="row">
+  <%= simple_form_for @restaurant, html: { class: 'w-100' } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :category, collection: Restaurant::CATEGORIES, include_blank: false %>
+    <%= f.submit "Add Restaurant", class: 'btn btn-outline-primary' %>
+  <% end %>
+</div>

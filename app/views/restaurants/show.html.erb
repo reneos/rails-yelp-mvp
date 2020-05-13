@@ -1,0 +1,36 @@
+<div class="row justify-content-between align-items-center">
+  <h1><%= @restaurant.name.titleize %></h1>
+  <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: 'btn btn-outline-secondary' %>
+</div>
+
+<div class="row">
+    <div class="card w-100 mb-3">
+      <div class="card-body">
+
+        <div class="card-subtitle"><%= @restaurant.category %></div>
+        <div class="card-text"><%= @restaurant.address %></div>
+
+      </div>
+    </div>
+</div>
+
+<% if @restaurant.reviews.empty? %>
+<div class="row">
+    <div class="alert alert-secondary col-12">
+      There are currently no reviews for this restaurant.
+    </div>
+  </div>
+<% else %>
+
+  <% @restaurant.reviews.each do |review| %>
+    <div class="row">
+      <div class="card w-100 bg-light mb-3 review">
+        <div class="card-body">
+          <div class="card-text"><%= review.content %></div>
+          <div class="card-subtitle"><%= "⭐️" * review.rating %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<% end %>
